@@ -165,8 +165,7 @@ struct CreateTestView: View {
                     let fileURL = try result.get()
                     modelView.changeFilepath(filePath: fileURL)
                     modelView.testResultData = modelView.loadCSVData(filePathURL: modelView.filePath!)
-                    //print("printing from rgv")
-                    //print("file URL : - \(model.filePath)")
+                    
                     self.fileName =  fileURL.lastPathComponent
                     
                 }  // do ends here
@@ -204,10 +203,10 @@ struct CreateTestView: View {
                 }
                 
                 let fileURL =  filePath.appendingPathComponent("\(view.name) \(view.section).pdf")
-                //print("printing....")
+                print("printing....")
                 
-                //print("file url: - \(fileURL)")
-                //print("printing done....")
+                print("file url: - \(fileURL)")
+                print("printing done....")
                 
                 do {
                     try pdfData.write(to: fileURL)
