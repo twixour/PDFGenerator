@@ -6,17 +6,16 @@
 //
 
 import SwiftUI
+import PDFKit
 
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            CreateTestView()
         }
         .padding()
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {

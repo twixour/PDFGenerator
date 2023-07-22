@@ -11,6 +11,11 @@
 		E45563BB2A6A136300AB767D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45563BA2A6A136300AB767D /* ContentView.swift */; };
 		E45563BD2A6A136500AB767D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E45563BC2A6A136500AB767D /* Assets.xcassets */; };
 		E45563C02A6A136500AB767D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E45563BF2A6A136500AB767D /* Preview Assets.xcassets */; };
+		E45563CE2A6A2EA400AB767D /* DataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45563CD2A6A2EA400AB767D /* DataFile.swift */; };
+		E45563D02A6A30B400AB767D /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45563CF2A6A30B400AB767D /* DataViewModel.swift */; };
+		E45563D72A6A5A1100AB767D /* PDFChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45563D62A6A5A1100AB767D /* PDFChangeView.swift */; };
+		E45563DB2A6AA0C000AB767D /* CreateTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45563DA2A6AA0C000AB767D /* CreateTestView.swift */; };
+		E4BB246D2A6ADCB5006D0CAD /* TextAndTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BB246C2A6ADCB4006D0CAD /* TextAndTextFieldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		E45563BA2A6A136300AB767D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E45563BC2A6A136500AB767D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E45563BF2A6A136500AB767D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E45563CD2A6A2EA400AB767D /* DataFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFile.swift; sourceTree = "<group>"; };
+		E45563CF2A6A30B400AB767D /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
+		E45563D62A6A5A1100AB767D /* PDFChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFChangeView.swift; sourceTree = "<group>"; };
+		E45563DA2A6AA0C000AB767D /* CreateTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTestView.swift; sourceTree = "<group>"; };
+		E4BB246C2A6ADCB4006D0CAD /* TextAndTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAndTextFieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +63,7 @@
 			children = (
 				E45563B82A6A136300AB767D /* PDFGeneratorApp.swift */,
 				E45563BA2A6A136300AB767D /* ContentView.swift */,
+				E4979D762A6BB62D000DC4F6 /* TestMaker */,
 				E45563BC2A6A136500AB767D /* Assets.xcassets */,
 				E45563BE2A6A136500AB767D /* Preview Content */,
 			);
@@ -65,6 +76,26 @@
 				E45563BF2A6A136500AB767D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E4979D762A6BB62D000DC4F6 /* TestMaker */ = {
+			isa = PBXGroup;
+			children = (
+				E45563DA2A6AA0C000AB767D /* CreateTestView.swift */,
+				E4BB246C2A6ADCB4006D0CAD /* TextAndTextFieldView.swift */,
+				E45563D62A6A5A1100AB767D /* PDFChangeView.swift */,
+				E4979D772A6BB665000DC4F6 /* Model and ViewModel */,
+			);
+			path = TestMaker;
+			sourceTree = "<group>";
+		};
+		E4979D772A6BB665000DC4F6 /* Model and ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E45563CD2A6A2EA400AB767D /* DataFile.swift */,
+				E45563CF2A6A30B400AB767D /* DataViewModel.swift */,
+			);
+			path = "Model and ViewModel";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +169,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E45563BB2A6A136300AB767D /* ContentView.swift in Sources */,
+				E45563DB2A6AA0C000AB767D /* CreateTestView.swift in Sources */,
+				E45563D72A6A5A1100AB767D /* PDFChangeView.swift in Sources */,
+				E45563CE2A6A2EA400AB767D /* DataFile.swift in Sources */,
 				E45563B92A6A136300AB767D /* PDFGeneratorApp.swift in Sources */,
+				E45563D02A6A30B400AB767D /* DataViewModel.swift in Sources */,
+				E4BB246D2A6ADCB5006D0CAD /* TextAndTextFieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
