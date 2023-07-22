@@ -37,20 +37,14 @@ struct CreateTestView: View {
                     TextAndTextFieldView(headerName: "Full Marks", textFieldPlaceholderName: "Full Marks", textFieldName: $fullMarks)
                     TextAndTextFieldView(headerName: "Pass Marks", textFieldPlaceholderName: "Pass Marks", textFieldName: $passMarks)
                 }
-                
                 HStack {
                     TextAndTextFieldView(headerName: "Class", textFieldPlaceholderName: "Class", textFieldName: $className)
                     
                     TextAndTextFieldView(headerName: "Subject", textFieldPlaceholderName: "Subject", textFieldName: $subject)
                 }
-                
-               
-                
             }
             .padding(.bottom ,10)
-            
             HStack {
-                
                 Button(action:{
                     openFile.toggle()
                     disableGeneratePDF.toggle()
@@ -72,7 +66,6 @@ struct CreateTestView: View {
                         if(!testName.isEmpty) {
                             
                             modelView.makeTest(test: DataFile.Test(testName: testName, className: className, subject: subject, fullMarks: fullMarks, passMarks: passMarks, studentResult: modelView.testResultData!))
-                            
                         }
                     }
                 }) {
@@ -87,16 +80,12 @@ struct CreateTestView: View {
                         .shadow( radius: 2, x:2, y: 2)
                         .shadow(radius: 2, x:-2, y: -2)
                 }
-                
-                
             } // HStack ends here
-            
             Button(action:{
                 if((modelView.test) != nil) {
                     pdfGenerationNotification = "Generating PDF"
                     self.isLoading = true
                     createPDF(test: modelView.test!)
-                    
                 }
             }) {
                 Text("Genereate PDF")
@@ -111,8 +100,6 @@ struct CreateTestView: View {
                     .shadow(radius: 2, x:-2, y: -2)
             }
             .padding([.leading, .trailing],80)
-            
-            
             HStack {
                 Text(pdfGenerationNotification)
                     .font(.title2)
@@ -124,23 +111,15 @@ struct CreateTestView: View {
                 }
             }
             if isLoading {
-                
                 HStack {
                     ProgressView(value: progressValue, total: 1.0)
                         .progressViewStyle(LinearProgressViewStyle())
                         .frame(width: 200)
                     Text("\(Int(progressValue * 100)) %")
                 }
-                
-                
-                
             }
-            
-            
             if(pdfGenerationNotification == "PDF Generated") {
                 ShareLink("Export All PDF", items: downloadAllPDF(test: modelView.test!))
-                
-                
                 Button(action:{
                     deleteAllPDFs(test: modelView.test!)
                 }) {
@@ -155,9 +134,7 @@ struct CreateTestView: View {
                         .shadow(radius: 2, x: 2, y: 2)
                         .shadow(radius: 2, x: -2, y: -2)
                 }
-                
             }
-            
             Spacer()
         } .padding()// main VStack ends
             .fileImporter(isPresented: $openFile, allowedContentTypes: [.commaSeparatedText]) { result in
@@ -165,35 +142,26 @@ struct CreateTestView: View {
                     let fileURL = try result.get()
                     modelView.changeFilepath(filePath: fileURL)
                     modelView.testResultData = modelView.loadCSVData(filePathURL: modelView.filePath!)
-                    
                     self.fileName =  fileURL.lastPathComponent
-                    
                 }  // do ends here
                 catch {
                     print("error reading docs")
                     print(error.localizedDescription)
                 } // catch ends here
-                
             } // file Importer ends here
     } // body ends here
-    
     // createPDF starts
-    
     func createPDF(test: DataFile.Test)  {
-        
         var tempViews = Array<PDFChangeView>()
         for s in test.studentResult {
             tempViews.append(PDFChangeView(fullMarks: test.fullMarks, passMarks: test.passMarks, subject: test.subject, testName: test.testName, className: test.className, name: s.name, section: s.section, score: s.score, test: test))
         }
-        
         for (index, view) in tempViews.enumerated() {
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + Double(index)) {
                 let image = view.asImage()
                 let pdfData = image.asPDF()
                 let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
                 let filePath = documentsDirectory.appendingPathComponent("\(test.testName)")
-                
                 if !FileManager.default.fileExists(atPath: filePath.path) {
                     do {
                         try FileManager.default.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
@@ -201,13 +169,7 @@ struct CreateTestView: View {
                         print("Couldn't create document directory")
                     }
                 }
-                
                 let fileURL =  filePath.appendingPathComponent("\(view.name) \(view.section).pdf")
-                print("printing....")
-                
-                print("file url: - \(fileURL)")
-                print("printing done....")
-                
                 do {
                     try pdfData.write(to: fileURL)
                     progressValue = Double(Double(index) / Double(tempViews.count))
@@ -215,29 +177,20 @@ struct CreateTestView: View {
                     if(index + 1 == tempViews.count) {
                         pdfGenerationNotification = "PDF Generated"
                         self.isLoading = false
-                        
                     }
                 } catch {
                     print("Error saving PDF: \(error)")
                 }
-                
             } // dispatch queue ends
         } // for loop of tempviews ends
-        
-        // pdfGenerationNotification = "PDF Generated"
-        
     } // createPDF function ends here
-    
     func downloadAllPDF(test: DataFile.Test) -> [URL]{
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let filePath = documentsDirectory.appendingPathComponent("\(test.testName)")
-        
         do {
             // Get the contents of the directory
             let files = try FileManager.default.contentsOfDirectory(at: filePath, includingPropertiesForKeys: nil)
-            
             // Return the files
-            
             return files
         } catch {
             // If there was an error getting the files, print the error and return an empty array
@@ -245,7 +198,6 @@ struct CreateTestView: View {
             return []
         }
     }
-    
     // delete all PDFs begins
     func deleteAllPDFs(test: DataFile.Test){
         let fileManager = FileManager.default
@@ -264,11 +216,6 @@ struct CreateTestView: View {
     // delete all PDFs ends
 }  // struct ends here
 
-
-
-
-
-
 extension View {
     func asImage() -> UIImage {
         let controller = UIHostingController(rootView: self)
@@ -286,8 +233,6 @@ extension View {
     }
 }
 
-
-
 extension UIImage {
     func asPDF() -> Data {
         let pdfRenderer = UIGraphicsPDFRenderer(bounds: CGRect(origin: .zero, size: self.size))
@@ -298,13 +243,6 @@ extension UIImage {
         }
     }
 }
-
-
-
-
-
-
-
 
 
 struct CreateTestView_Previews: PreviewProvider {
